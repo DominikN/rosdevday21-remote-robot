@@ -13,7 +13,6 @@ RUN cd ros2_ws && \
     colcon build
 
 COPY eg1/ros_entrypoint.sh /
-COPY eg1/init-container.sh /opt
 
 USER user1
 

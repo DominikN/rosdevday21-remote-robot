@@ -64,11 +64,11 @@ Here's a link for Windows Installer: https://docs.docker.com/docker-for-mac/inst
 sudo chmod +x eg1/init-container.sh
 sudo chmod +x eg1/ros_entrypoint.sh
 
-docker build -t turtle_demo -f eg1/Dockerfile .
+sudo docker build -t turtle_demo -f eg1/Dockerfile .
 
 xhost local:root
 
-docker run --rm -it \
+sudo docker run --rm -it \
 --env DISPLAY \
 --volume /tmp/.X11-unix:/tmp/.X11-unix:rw \
 turtle_demo \
@@ -101,7 +101,7 @@ The multi-container setup, running on the same host can be described in a clean 
 
 ```bash
 cd rosdevday21-remote-robot/eg2
-docker-compose up
+sudo docker-compose up --build
 ```
 
 Result is the same:
