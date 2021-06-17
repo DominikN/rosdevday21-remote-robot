@@ -18,4 +18,4 @@ COPY eg1/init-container.sh /opt
 USER user1
 
 ENTRYPOINT ["/ros_entrypoint.sh"]
-CMD /opt/init-container.sh
+CMD ["bash"]

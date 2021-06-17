@@ -71,7 +71,8 @@ xhost local:root
 docker run --rm -it \
 --env DISPLAY \
 --volume /tmp/.X11-unix:/tmp/.X11-unix:rw \
-turtle_demo
+turtle_demo \
+ros2 launch my_turtle_bringup turtlesim_demo.launch.py
 ```
 
 We start here within a single docker container all ROS 2 nodes here from a single launch file `rosdevday21-remote-robot/ros2_ws/my_turtle_bringup/turtlesim_demo.launch.py`.
