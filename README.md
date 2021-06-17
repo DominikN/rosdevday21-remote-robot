@@ -129,7 +129,7 @@ To allow the container and ROSject see each other, we need to configure a VPN.
 
 ## [Eg. 3] SOLUTION: Connecting container on your laptop with turtlesim in the ROSject
 
-To enable communication between ROS 2 containers running on your laptops wiht a turtlesim running in the ROS DS we need to do:
+To enable communication between ROS 2 containers running on your laptops with a turtlesim running in the ROS DS we need to do:
 
 a) In the ROSject:
 - install & configure Husarnet VPN client
@@ -145,13 +145,13 @@ After we finish the system will look like this:
 
 ### I. Create a Husarnet Network
 
-#### 1. Register a free account at https://app.husarnet.com
+#### 1. Create a free account at https://app.husarnet.com
 
 ![Husarnet Register](docs/husarnet-register.png)
 
 #### 2. Confirm your e-mail
 
-After you click "Register" you will be redirected to your account and see that:
+After you click "Register" you will be redirected to your account where your will see:
 
 ![Husarnet Confirm Account](docs/husarnet-confirm-account.png)
 
@@ -177,7 +177,7 @@ Click **[Add element]** button and you will see a window with your Join Code:
 
 ![Husarnet Join Code](docs/husarnet_joincode.png)
 
-In our example: 
+In our example **the Join Code is**: 
 ```
 fc94:b01d:1803:8dd8:b293:5c7d:7639:932a/KLKDQsX9UGCzsCMao9ccd7
 ```
@@ -189,7 +189,7 @@ Navigate to `rosdevday21-remote-robot/eg3` folder and edit `.env` file sitting t
 
 ![Env file](docs/env-file.png)
 
-Place a Join Code from a previous step here (remember to use your own Join Code!).
+Place the Join Code from a previous step here (remember to use your own Join Code!).
 
 Now you can just start a container:
 
@@ -234,7 +234,7 @@ turtle_controller_1  | [color_controller-2] [WARN] [1623963537.195861386] [color
 husarnet_1           | Husarnet IP address: fc94:8ef5:c077:330b:5309:d096:fbd6:def4
 ```
 
-Husarnet Client started by Docker Compose has been configured with IPv6 address: `fc94:8ef5:c077:330b:5309:d096:fbd6:def4`
+Husarnet Client started by Docker Compose has been configured with the following IPv6 address: `fc94:8ef5:c077:330b:5309:d096:fbd6:def4`
 
 Your container should also be now available on your Husarnet Dashboard account:
 
@@ -243,7 +243,7 @@ Your container should also be now available on your Husarnet Dashboard account:
 
 ### III. Connect your ROSject to the same Husarnet network
 
-1. Start Husarnet Daemon
+#### 1. Start Husarnet Daemon
 
 In this ROSject Husarnet VPN Client is pre-installed. Systemd is not enabled in the ROSjects, so you need to open a new terminal window and start Husarnet Daemon manually:
 
@@ -251,7 +251,7 @@ In this ROSject Husarnet VPN Client is pre-installed. Systemd is not enabled in 
 sudo husarnet daemon
 ```
 
-2. Connect your ROSject to the Husarnet network
+#### 2. Connect your ROSject to the Husarnet network
 
 To connect this ROSject to the same Husarnet network as the containers from a previous step just use `husarnet join` command with your own Join Code:
 
@@ -265,7 +265,7 @@ Now when you refresh your Husarnet Dashboard window you should see the second de
 
 ![Husarnet second device](docs/husarnet-two-devices.png)
 
-3. Configure a Cyclone DDS
+#### 3. Configure a Cyclone DDS
 
 > In this ROSject Cyclone DDS RMW is pre-installed. You can configure FastDDS in a similar way.
 
@@ -273,9 +273,11 @@ Open a Code Editor in the ROSject and edit `cyclonedds.xml` file:
 
 ![CycloneDDS XML configuration](docs/cyclone-dds-edit.png)
 
-Please place IPv6 address of the `turtle-controller-1` device. In my example it is `fc94:8ef5:c077:330b:5309:d096:fbd6:def4` and save a file.
+Please place IPv6 address of the `turtle-controller-1` device. 
 
-4. Running a turtlesim
+In this example it's `fc94:8ef5:c077:330b:5309:d096:fbd6:def4` and save a file.
+
+#### 4. Run a turtlesim
 
 Execute the following lines in the terminal window inside this ROSject:
 
