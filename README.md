@@ -10,6 +10,8 @@ You will learn:
 
 To focus purely on connectivity, not on running fancy ROS 2 software or robots in Gazebo, I will go through different scenarios based on a simple ROS 2 system containing of 3 nodes:
 
+![System architecture](docs/fig1-system-architecture.png)
+
 - `/turtlesim` - a very simple, simulator for learning ROS where you simulate ... a turtle :)
 - `/move_controller` - node for controlling the movement of the turtle
 - `/color_controller` - node that is changing the color of the line drawn by a turtle each second
