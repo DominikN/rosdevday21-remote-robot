@@ -3,8 +3,8 @@ version: '2.3'
 services:
     turtle_controller:
         build:
-            context: ../../
-            dockerfile: eg4/dev1/Dockerfile
+            context: ../
+            dockerfile: eg3/Dockerfile
         command: ros2 launch my_turtle_bringup only_controller.launch.py
 
     husarnet:
