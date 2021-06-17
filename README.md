@@ -60,7 +60,7 @@ Here's a link for Windows Installer: https://docs.docker.com/docker-for-mac/inst
 
 ![launch the whole ROS 2 app in a single Docker container](docs/fig2-one-container.png)
 
-**Please stay in `ros2_docker_examples/` directory while executing those commands:**
+**Please stay in `rosdevday21-remote-robot/` directory while executing those commands:**
 
 ```
 sudo chmod +x eg1/init-container.sh
@@ -83,7 +83,7 @@ Dockerfile is in `ros2_docker_examples/eg1` directory. You should see a turtle d
 
 ![turtlesim demo](docs/screenshot.png)
 
-Congrats, let's make our system working accross a multiple Docker Containers in the next step.
+Congrats, let's make our system working accross multiple Docker Containers in the next step.
 
 ## [Eg. 2] Let's do the same but in two containers
 
@@ -99,7 +99,7 @@ The target architecture is as follows:
 
 ![launch multi-container ROS 2 app using docker-compose](docs/fig3-two-containers.png)
 
-The multi-container setup, running on the same host can be described in a clean and elegant way in `docker-compose.yml`, so running this multicontainer system needs even less effort:
+The multi-container setup, running on the same host can be described in a clean and elegant way in `docker-compose.yml`, so running this multi-container system needs even less effort:
 
 ```bash
 cd rosdevday21-remote-robot/eg2
@@ -126,13 +126,13 @@ Because two ROS 2 devices are in different networks, DDS can not perform auto-di
 
 Also devices can not reach each other because they do not have neither public nor static IP addresses and are behind Wi-Fi router NAT.
 
-The similar problem will be with connecting the container running on your laptop with this ROSject (that is basically a Virtaul Machine running on top of TheConstructSim server). You do not have access to the public IP of your VM - for the rest of world your ROSject runs on `52.84.197.70` (IP of https://app.theconstructsim.com).
+The similar problem will be with connecting the container running on your laptop with this ROSject (that is basically a Virtual Machine running on top of TheConstructSim server). You do not have access to the public IP of your VM - for the rest of world your ROSject runs on `52.84.197.70` (IP of https://app.theconstructsim.com).
 
-To allow the container and ROSject see each other, we need to configure a VPN.
+**To allow the container and ROSject see each other, we need to configure a VPN.**
 
 ## [Eg. 3] SOLUTION: Connecting container on your laptop with turtlesim in the ROSject
 
-To enable communication between ROS 2 containers running on your laptops with a turtlesim running in the ROS DS we need to do:
+To enable communication between ROS 2 containers running on your laptop with a turtlesim running in the ROSject we need to do:
 
 a) In the ROSject:
 - install & configure Husarnet VPN client
@@ -256,7 +256,7 @@ sudo husarnet daemon
 
 #### 2. Connect your ROSject to the Husarnet network
 
-To connect this ROSject to the same Husarnet network as the containers from a previous step just use `husarnet join` command with your own Join Code:
+To connect this ROSject to the same Husarnet network as the containers from a previous step just use `husarnet join` command **with your own Join Code (!!!)**:
 
 ```bash
 sudo husarnet join fc94:b01d:1803:8dd8:b293:5c7d:7639:932a/KLKDQsX9UGCzsCMao9ccd7 rosject1
@@ -276,7 +276,7 @@ Open a Code Editor in the ROSject and edit `cyclonedds.xml` file:
 
 ![CycloneDDS XML configuration](docs/cyclone-dds-edit.png)
 
-Please place IPv6 address of the `turtle-controller-1` device. 
+Please place IPv6 address of the `turtle-controller-1` device in this part: `<Peer address="..."/>`. 
 
 In this example it's `fc94:8ef5:c077:330b:5309:d096:fbd6:def4` and save a file.
 
