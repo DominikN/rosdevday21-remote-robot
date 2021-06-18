@@ -24,7 +24,7 @@ Our Goal:
 
 
 -------------
-## Before you start Install Docker
+## Before you start - Install Docker
 
 Make sure you have Docker and Docker-Compose installed on your laptop. 
 
@@ -137,7 +137,7 @@ To enable communication between ROS 2 containers running on your laptop with a t
 a) In the ROSject:
 - install & configure Husarnet VPN client
 - create a custom DDS confiugration file
-- run the turtlesime
+- run the turtlesim
 
 b) On your laptop:
 - paste Husarnet JoinCode to the `eg3/.env` file.
@@ -188,13 +188,13 @@ Save it for next steps.
 
 ## II. Start a container on your laptop
 
-Navigate to `rosdevday21-remote-robot/eg3` folder and edit `.env` file sitting there:
+Navigate to `rosdevday21-remote-robot/eg3` folder and edit `.env` file setting there:
 
 ![Env file](docs/env-file.png)
 
 Place the Join Code from a previous step here (remember to use your own Join Code!).
 
-Now you can just start a container:
+Now you can simply start a container:
 
 ```bash
 cd rosdevday21-remote-robot/eg3
@@ -237,7 +237,7 @@ turtle_controller_1  | [color_controller-2] [WARN] [1623963537.195861386] [color
 husarnet_1           | Husarnet IP address: fc94:8ef5:c077:330b:5309:d096:fbd6:def4
 ```
 
-Husarnet Client started by Docker Compose has been configured with the following IPv6 address: `fc94:8ef5:c077:330b:5309:d096:fbd6:def4`
+In this example Husarnet Client started by Docker Compose has been configured with the following IPv6 address: `fc94:8ef5:c077:330b:5309:d096:fbd6:def4`. **Yours will be different!**
 
 Your container should also be now available on your Husarnet Dashboard account:
 
@@ -253,6 +253,8 @@ In this ROSject Husarnet VPN Client is pre-installed. Systemd is not enabled in 
 ```bash
 sudo husarnet daemon
 ```
+
+Keep this command/window running. It's the process that actually handles the network traffic.
 
 #### 2. Connect your ROSject to the Husarnet network
 
@@ -278,7 +280,7 @@ Open a Code Editor in the ROSject and edit `cyclonedds.xml` file:
 
 Please place IPv6 address of the `turtle-controller-1` device in this part: `<Peer address="..."/>`. 
 
-In this example it's `fc94:8ef5:c077:330b:5309:d096:fbd6:def4` and save a file.
+In this example it's `fc94:8ef5:c077:330b:5309:d096:fbd6:def4` (again, your's will be different) and save a file.
 
 #### 4. Run a turtlesim
 
