@@ -287,6 +287,9 @@ In this example it's `fc94:8ef5:c077:330b:5309:d096:fbd6:def4` (again, your's wi
 Execute the following lines in the terminal window inside this ROSject:
 
 ```bash
+sudo apt update
+sudo apt install ros-foxy-rmw-cyclonedds-cpp
+
 source /opt/ros/foxy/setup.bash
 export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 export CYCLONEDDS_URI=file:///home/user/cyclonedds.xml
